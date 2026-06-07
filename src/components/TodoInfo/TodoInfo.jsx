@@ -1,15 +1,14 @@
 // Add the required props
-export const TodoInfo = ({ todo }) => (
-  <ul>
-    <li>
-      <strong>Title:</strong> {todo.title}
-    </li>
+import { UserInfo } from '../UserInfo';
 
-    <li>
-      <strong>User:</strong> {todo.user && todo.user.name}
-    </li>
-    <li>
-      <strong>Completed:</strong> {todo.completed ? 'Yes' : 'No'}
-    </li>
-  </ul>
-);
+export const TodoInfo = ({ todo }) => {
+  return (
+    <article
+      className={`TodoInfo ${todo.completed ? 'TodoInfo--completed' : ''}`}
+    >
+      <h2 className="TodoInfo__title">{todo.title}</h2>
+
+      {todo.user && <UserInfo user={todo.user} />}
+    </article>
+  );
+};
